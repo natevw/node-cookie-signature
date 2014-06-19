@@ -39,5 +39,13 @@ exports.unsign = function(val, secret){
   var str = val.slice(0, val.lastIndexOf('.'))
     , mac = exports.sign(str, secret);
   
-  return exports.sign(mac, secret) == exports.sign(val, secret) ? str : false;
+  return str_eq_const(mac, val) ? str : false;
 };
+
+// avoid timing attacks by comparing entirety of strings, without early exit
+function str_eq_const(a,b) {
+    if (a.length !== b.length) return false;
+    var neq = 0;
+    for (var i = 0, len = a.length; i < len; ++i) neq |= a.charCodeAt(i) ^ b.charCodeAt(i);
+    return !neq;
+}

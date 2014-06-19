@@ -1,3 +1,7 @@
+1.0.4 / 2014-06-18
+
+  * more explicit constant time comparison
+
 1.0.3 / 2014-01-28
 ==================
 
@@ -8,6 +12,7 @@
 
  * fix missing repository warning
  * fix typo in test
+
 
 1.0.1 / 2013-04-15
 ==================
